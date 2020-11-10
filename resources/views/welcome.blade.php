@@ -7,6 +7,16 @@
         <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+        <style>
+            .icon {
+                -webkit-transition: all 0.5s;
+                transition: all 0.5s;
+            }
+
+            .icon-active {
+                transform: rotate(45deg);
+            }
+        </style>
     </head>
     <body>
         <div class="container">
@@ -18,7 +28,7 @@
                         </div>
                         <div class="card-body">
                             <p class="lead text-muted"><em>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sit!</em></p>
-                            <button class="mb-3 btn btn-sm btn-flat btn-success shadow" id="kontak-tambah" data-toggle="collapse" data-target="#kontak-collapse"><i class="fa fa-plus"></i> Add</button>
+                            <button class="mb-3 btn btn-sm btn-flat btn-success shadow" id="kontak-tambah" data-toggle="collapse" data-target="#kontak-collapse"><i class="icon fa fa-plus"></i> Add</button>
                             <div id="kontak-collapse" class="collapse">
                                 <div class="card">
                                     <div class="card-body shadow">
@@ -95,11 +105,13 @@
                 });
 
                 $('#kontak-collapse').on('hide.bs.collapse', function () {
-                    $('#kontak-tambah').removeClass('btn-danger').addClass('btn-success').html('<i class="fa fa-plus"></i> Add');
+                    $('#kontak-tambah').removeClass('btn-danger').addClass('btn-success').html('<i class="icon fa fa-plus"></i> Add');
                 });
 
                 $('#kontak-collapse').on('show.bs.collapse', function () {
-                    $('#kontak-tambah').removeClass('btn-success').addClass('btn-danger').html('<i class="fa fa-times"></i> Close');
+                    $('#kontak-tambah').removeClass('btn-success').addClass('btn-danger').html('<i class="icon fa fa-plus"></i> Cancel');
+                    $('.icon').toggleClass('icon-active');
+                    $('#kontak-form')[0].reset();
                 });
             });
 
